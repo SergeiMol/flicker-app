@@ -9,6 +9,7 @@ import { BookmarksModule } from './pages/bookmarks/bookmarks.module';
 import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ComponentsModule,
     HttpClientModule,
     NgxPaginationModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
