@@ -20,6 +20,10 @@ export class SearchInputComponent implements OnInit {
     this.onWordInput();
   }
 
+  clearField(): void {
+    this.form.setValue('');
+  }
+
   onWordInput(): void {
     this.form.valueChanges.pipe(debounceTime(500)).subscribe(res => this.searchValue.emit(res));
   }

@@ -41,7 +41,6 @@ export class SearchComponent implements OnInit {
     }
     this.word = word;
     this.images = this.searchInputService.onSearchFieldInput(word, this.page);
-    console.log(this.images);
   }
 
 }

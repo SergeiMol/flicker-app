@@ -1,11 +1,14 @@
-<img alt="search" src="assets/icons/search.svg" class="search-input__icon">
+<img alt="search"
+     src="assets/icons/search.svg"
+     class="search-input__icon search-input__icon_find">
 <input
   type="text"
   class="search-input__control"
   [formControl]="form"
   placeholder="{{placeholder}}"
 >
-
-<!--[placeholder]="placeholder"
-  [(ngModel)]="value"
-  (ngModelChange)="onChange($event)"-->
+<img alt="search"
+     src="assets/icons/close.svg"
+     class="search-input__icon search-input__icon_close"
+     (click)="clearField()"
+>
