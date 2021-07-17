@@ -1,9 +1,8 @@
 <div class="nav-list__container">
-  <a *ngFor="let item of navItems">
+  <a *ngFor="let item of navItems" [routerLink]="item.link">
     <img src="{{item.src}}"
          alt="{{item.alt}}"
          class="nav-list__item"
-         [routerLink]="item.link"
     >
   </a>
 </div>
