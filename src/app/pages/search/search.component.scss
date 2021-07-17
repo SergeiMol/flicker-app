@@ -1,0 +1,28 @@
+:host {
+  .search {
+    &__container {
+      max-width: 1920px;
+      margin: 0 auto;
+      display: flex;
+    }
+
+    &__content {
+      max-width: 1060px;
+      width: 100%;
+      margin-left: 20px;
+    }
+
+    &__aside {
+      max-width: 170px;
+      width: 100%;
+      height: 100vh;
+      border-right: solid 1px rgba(0, 0, 0, 0.1);
+      display: flex;
+    }
+
+    &__nav {
+      width: 170px;
+      margin-top: 170px;
+    }
+  }
+}

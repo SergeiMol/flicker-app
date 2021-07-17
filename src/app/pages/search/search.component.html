@@ -1,0 +1,18 @@
+<div class="search__container">
+  <aside class="search__aside">
+    <app-nav-list class="search__nav"></app-nav-list>
+  </aside>
+  <div class="search__content">
+    <app-search-input (searchValue)="findPhotos($event)"></app-search-input>
+
+    <div style="flex-wrap: wrap;display: flex; ">
+      <mat-card *ngFor="let image of images" style="width: 240px;">
+        <mat-card-header>
+          <mat-card-title>{{image.title}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{image.url}}_m.jpg" alt="Photo of a Shiba Inu" style="height: 100px">
+
+      </mat-card>
+    </div>
+  </div>
+</div>

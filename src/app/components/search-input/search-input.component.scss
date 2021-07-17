@@ -1,0 +1,43 @@
+:host {
+  display: flex;
+  position: relative;
+
+  &.search-input--searching .search-input__control {
+    color: #276DCB;
+  }
+
+  &.search-input--has-value .search-input__control {
+    border-color: #C4C4C4;
+  }
+
+  .search-input {
+    &__icon {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      display: inline-flex;
+      height: 30px;
+      width: 30px;
+
+      margin-right: 15px;
+    }
+
+    &__control {
+      border: 1px solid transparent;
+      font-size: 18px;
+      line-height: 25px;
+
+      width: 100%;
+      height: 50px;
+      padding: 10px 15px 10px 60px;
+      background: #FAFAFA;
+      border-radius: 4px;
+      transition: border-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+      &:hover,
+      &:focus {
+        border-color: #C4C4C4;
+      }
+    }
+  }
+}
