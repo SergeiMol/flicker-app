@@ -43,4 +43,12 @@ export class SearchComponent implements OnInit {
     this.images = this.searchInputService.onSearchFieldInput(word, this.page);
   }
 
+  save(title: string, URL: string): void {
+    // @ts-ignore
+    let arr = JSON.parse(localStorage.getItem('favorite'));
+    arr ? arr.push({title, link: URL}) : arr = [{title, link: URL}];
+
+    localStorage.setItem('favorite', JSON.stringify(arr));
+  }
+
 }

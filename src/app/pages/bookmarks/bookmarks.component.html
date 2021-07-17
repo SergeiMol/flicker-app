@@ -2,4 +2,19 @@
   <aside class="bookmarks__aside">
     <app-nav-list class="bookmarks__nav"></app-nav-list>
   </aside>
+  <div class="images__list" *ngIf="images?.length; else noContent">
+
+    <div *ngFor="let image of images; let i = index" class="bookmarks__content">
+      <img alt="{{image.title}}" src="{{image.link}}_m.jpg">
+      <button mat-ripple (click)="removeImage(i)">remove</button>
+    </div>
+  </div>
 </div>
+
+
+<ng-template #noContent>
+  <div class="empty-list__title">
+    There is no content
+  </div>
+</ng-template>
+

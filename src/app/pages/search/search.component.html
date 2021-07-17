@@ -20,6 +20,9 @@
           <mat-card-title>{{image.title}}</mat-card-title>
         </mat-card-header>
         <img mat-card-image class="images__photo" src="{{image.url}}_m.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-actions>
+          <button mat-ripple (click)="save(image.title ,image.url)">LIKE</button>
+        </mat-card-actions>
 
       </mat-card>
     </div>

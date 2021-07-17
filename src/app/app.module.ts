@@ -22,7 +22,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BookmarksModule,
     ComponentsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

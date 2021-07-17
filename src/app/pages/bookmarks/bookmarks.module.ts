@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BookmarksRoutingModule } from './bookmarks-routing.module';
 import { BookmarksComponent } from './bookmarks.component';
 import { ComponentsModule } from '../../components/components.module';
+import { MatRippleModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ComponentsModule } from '../../components/components.module';
   imports: [
     CommonModule,
     BookmarksRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    MatRippleModule
   ]
 })
 export class BookmarksModule {

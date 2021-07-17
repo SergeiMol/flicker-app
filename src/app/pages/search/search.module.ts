@@ -8,6 +8,7 @@ import { ComponentsModule } from '../../components/components.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatRippleModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ComponentsModule,
     MatGridListModule,
     MatCardModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatRippleModule
   ]
 })
 export class SearchModule {
