@@ -8,7 +8,7 @@ import { SearchModule } from './pages/search/search.module';
 import { BookmarksModule } from './pages/bookmarks/bookmarks.module';
 import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
-import { JwPaginationModule } from 'jw-angular-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { JwPaginationModule } from 'jw-angular-pagination';
     BookmarksModule,
     ComponentsModule,
     HttpClientModule,
-    JwPaginationModule
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

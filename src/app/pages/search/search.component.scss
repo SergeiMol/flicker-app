@@ -1,9 +1,45 @@
 :host {
+  font-family: Lato serif;
+
+  .images {
+    &__list {
+      flex-wrap: wrap;
+      display: flex;
+    }
+
+    &__item {
+      width: 300px;
+      margin-bottom: 20px;
+
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+
+    &__photo {
+      height: 100px;
+    }
+  }
+
+  .empty-list {
+    &__title {
+      margin-top: 40px;
+      margin-left: 60px;
+      font-size: 32px;
+      line-height: 44px;
+    }
+  }
+
   .search {
     &__container {
       max-width: 1920px;
       margin: 0 auto;
       display: flex;
+    }
+
+
+    &__input {
+      margin-top: 40px;
     }
 
     &__content {

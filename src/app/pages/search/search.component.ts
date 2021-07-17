@@ -11,11 +11,17 @@ export class SearchComponent implements OnInit {
   images: IPhoto[] = [];
   isEllipsis = true;
   element = document.getElementById('ellipsis-ex');
+  page = 1;
+  total = 0;
+  word = '';
 
   constructor(private searchInputService: SearchInputService) {
   }
 
   ngOnInit(): void {
+    this.searchInputService.pages.valueChanges?.subscribe(res => {
+      this.total = res * 10;
+    });
   }
 
   toggleEllipsis(): void {
@@ -23,12 +29,18 @@ export class SearchComponent implements OnInit {
     this.isEllipsis = !this.isEllipsis;
   }
 
-  onChangePage(page: number): void {
-    console.log(page);
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.images = this.searchInputService.onSearchFieldInput(this.word, this.page);
+
   }
 
   findPhotos(word: string): void {
-    this.images = this.searchInputService.onSearchFieldInput(word);
+    if (word !== this.word) {
+      this.page = 1;
+    }
+    this.word = word;
+    this.images = this.searchInputService.onSearchFieldInput(word, this.page);
     console.log(this.images);
   }
 

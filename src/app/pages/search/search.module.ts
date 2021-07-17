@@ -5,9 +5,9 @@ import { SearchRoutingModule } from './search-routing.module';
 import { SearchComponent } from './search.component';
 import { RouterModule } from '@angular/router';
 import { ComponentsModule } from '../../components/components.module';
-import { JwPaginationModule } from 'jw-angular-pagination';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -19,9 +19,9 @@ import {MatCardModule} from '@angular/material/card';
     RouterModule,
     SearchRoutingModule,
     ComponentsModule,
-    JwPaginationModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    NgxPaginationModule
   ]
 })
 export class SearchModule {

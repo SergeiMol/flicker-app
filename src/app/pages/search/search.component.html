@@ -3,16 +3,37 @@
     <app-nav-list class="search__nav"></app-nav-list>
   </aside>
   <div class="search__content">
-    <app-search-input (searchValue)="findPhotos($event)"></app-search-input>
+    <app-search-input (searchValue)="findPhotos($event)"
+                      class="search__input"
+                      placeholder="What do you want to find?"
+    ></app-search-input>
+    <pagination-controls (pageChange)="handlePageChange($event)"
+                         [responsive]="true"
+                         *ngIf="total"
+    >
+    </pagination-controls>
 
-    <div style="flex-wrap: wrap;display: flex; ">
-      <mat-card *ngFor="let image of images" style="width: 240px;">
+    <div class="images__list" *ngIf="total; else noContent">
+      <mat-card *ngFor="let image of images | paginate:{ itemsPerPage: 12, currentPage: page, totalItems: total }"
+                class="images__item">
         <mat-card-header>
           <mat-card-title>{{image.title}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="{{image.url}}_m.jpg" alt="Photo of a Shiba Inu" style="height: 100px">
+        <img mat-card-image class="images__photo" src="{{image.url}}_m.jpg" alt="Photo of a Shiba Inu">
 
       </mat-card>
     </div>
+    <pagination-controls (pageChange)="handlePageChange($event)"
+                         [responsive]="true"
+                         *ngIf="total"
+    >
+    </pagination-controls>
   </div>
 </div>
+
+
+<ng-template #noContent>
+  <div class="empty-list__title">
+    Start typing and see the magic
+  </div>
+</ng-template>

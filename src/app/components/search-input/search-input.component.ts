@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
@@ -10,6 +10,7 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class SearchInputComponent implements OnInit {
   form = new FormControl('');
+  @Input() placeholder = '';
   @Output() searchValue = new EventEmitter();
 
   constructor() {

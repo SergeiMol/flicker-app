@@ -13,19 +13,6 @@ export class HttpSearchService {
   }
 
   getFlickrPhotos(params: string): Observable<IFlickrResponse> {
-    console.log(params);
     return this.http.get<IFlickrResponse>(environment.flickr.url + params);
-    /*.pipe(map((res: IFlickrResponse) => {
-      const urlArr = [];
-      res.photos.photo.forEach((ph: FlickrPhoto) => {
-        const photoObj = {
-          url: `https://farm${ph.farm}.staticflickr.com/${ph.server}/${ph.id}_${ph.secret}`,
-          title: ph.title
-        };
-        urlArr.push(photoObj);
-      });
-      return urlArr;
-    }));*/
-
   }
 }

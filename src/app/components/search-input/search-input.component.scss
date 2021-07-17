@@ -1,6 +1,7 @@
 :host {
   display: flex;
   position: relative;
+  align-items: center;
 
   &.search-input--searching .search-input__control {
     color: #276DCB;
@@ -13,7 +14,7 @@
   .search-input {
     &__icon {
       position: absolute;
-      top: 10px;
+      top: 20px;
       left: 15px;
       display: inline-flex;
       height: 30px;
