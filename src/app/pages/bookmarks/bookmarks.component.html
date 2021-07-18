@@ -19,9 +19,9 @@
         <mat-card-header>
           <mat-card-title>{{image.title}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image class="images__photo" src="{{image.link}}_m.jpg" alt="{{image.title}}">
+        <img mat-card-image class="images__photo" src="{{image.url}}_m.jpg" alt="{{image.title}}">
         <mat-card-actions>
-          <button mat-ripple (click)="removeImage(i)">Remove</button>
+          <button mat-button (click)="removeImage(i)">Remove</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -36,7 +36,7 @@
 
 <ng-template #noContent>
   <div class="empty-list__title">
-    There is no content
+    You haven't liked any images yet
   </div>
 </ng-template>
 

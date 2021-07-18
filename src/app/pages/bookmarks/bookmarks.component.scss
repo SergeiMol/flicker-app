@@ -43,6 +43,15 @@
     }
   }
 
+  .empty-list {
+    &__title {
+      margin-top: 40px;
+      font-size: 24px;
+      line-height: 44px;
+      text-align: center;
+    }
+  }
+
   .images {
     &__list {
       flex-wrap: wrap;
@@ -52,23 +61,11 @@
 
     &__item {
       width: 300px;
-      margin-bottom: 20px;
-
-      &:not(:last-child) {
-        margin-right: 15px;
-      }
+      margin: 10px;
     }
 
     &__photo {
       height: 150px;
-    }
-  }
-
-  @media (max-width: 500px) {
-    .images__item {
-      &:not(:last-child) {
-        margin-right: 0;
-      }
     }
   }
 

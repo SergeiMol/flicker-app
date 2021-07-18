@@ -6,10 +6,16 @@ import { HeaderComponent } from './header/header.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatRippleModule } from '@angular/material/core';
+import { InactivityNotificationComponent } from './inactivity-notification/inactivity-notification.component';
 
 
 @NgModule({
-  declarations: [NavListComponent, HeaderComponent, SearchInputComponent],
+  declarations: [
+    NavListComponent,
+    HeaderComponent,
+    SearchInputComponent,
+    InactivityNotificationComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,

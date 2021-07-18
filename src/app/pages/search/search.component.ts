@@ -1,13 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { SearchInputService } from '../../core/services/search-input.service';
 import { IPhoto } from '../../core/interfaces/photo.interface';
+import { UserIdleService } from 'angular-user-idle';
+import { MatDialog } from '@angular/material/dialog';
+import { InactivityNotificationComponent } from '../../components/inactivity-notification/inactivity-notification.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
+  private readonly subscriptions$ = new Subscription();
+
   images: IPhoto[] = [];
   element = document.getElementById('ellipsis-ex');
   page = 1;
@@ -15,13 +21,52 @@ export class SearchComponent implements OnInit {
   previousWord = '';
   emptyMessage = 'Start typing and see the magic';
 
-  constructor(private searchInputService: SearchInputService) {
+  constructor(private searchInputService: SearchInputService,
+              private userIdle: UserIdleService,
+              private matDialog: MatDialog) {
+  }
+
+  @HostListener('document:keyup', ['$event'])
+  @HostListener('document:click', ['$event'])
+  @HostListener('document:wheel', ['$event'])
+  @HostListener('document:mousemove', ['$event'])
+  resetTimer(): void {
+    this.userIdle.resetTimer();
+  }
+
+  @HostListener('document:visibilitychange', ['$event'])
+  setTimerStatus(): void {
+    if (document.hidden) {
+      this.userIdle.stopWatching();
+    } else {
+      this.userIdle.startWatching();
+    }
   }
 
   ngOnInit(): void {
+    this.getImagesFromStorage();
+    this.userIdle.startWatching();
+    this.showInactiveNotification();
+  }
+
+  getImagesFromStorage(): void {
     this.searchInputService.pages.valueChanges?.subscribe(res => {
       this.total = res * 10;
     });
+  }
+
+  showInactiveNotification(): void {
+    this.subscriptions$.add(
+      this.userIdle.onTimerStart().subscribe(count => {
+        if (count) {
+          this.userIdle.stopWatching();
+          this.matDialog.open(InactivityNotificationComponent, {
+            maxWidth: '100%',
+            width: '500px',
+          }).afterClosed().subscribe(() => this.userIdle.startWatching());
+        }
+      })
+    );
   }
 
   handlePageChange(event: number): void {
@@ -40,7 +85,6 @@ export class SearchComponent implements OnInit {
   }
 
   checkContent(word: string): void {
-    console.log(word);
     if (word && this.total) {
       this.emptyMessage = 'Content not found';
     } else {
@@ -48,10 +92,14 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  save(title: string, URL: string): void {
+  saveImage(title: string, URL: string): void {
     // @ts-ignore
     let arr = JSON.parse(localStorage.getItem('favorite'));
-    arr ? arr.push({title, link: URL}) : arr = [{title, link: URL}];
+    arr ? arr.push({title, link: URL}) : arr = [{title, url: URL}];
     localStorage.setItem('favorite', JSON.stringify(arr));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions$.unsubscribe();
   }
 }

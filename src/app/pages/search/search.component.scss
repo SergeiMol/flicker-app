@@ -10,11 +10,8 @@
 
     &__item {
       width: 300px;
-      margin-bottom: 20px;
+      margin: 10px;
 
-      &:not(:last-child) {
-        margin-right: 15px;
-      }
     }
 
     &__photo {

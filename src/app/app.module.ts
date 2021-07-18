@@ -10,6 +10,7 @@ import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatRippleModule } from '@angular/material/core';
+import { UserIdleModule } from 'angular-user-idle';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MatRippleModule } from '@angular/material/core';
     ComponentsModule,
     HttpClientModule,
     NgxPaginationModule,
-    MatRippleModule
+    MatRippleModule,
+    UserIdleModule.forRoot({idle: 4, timeout: 0})
   ],
   providers: [],
   bootstrap: [AppComponent]

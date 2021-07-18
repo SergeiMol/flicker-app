@@ -7,6 +7,7 @@ import { ComponentsModule } from '../../components/components.module';
 import { MatRippleModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ComponentsModule,
     MatRippleModule,
     MatCardModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatButtonModule
   ]
 })
 export class BookmarksModule {
