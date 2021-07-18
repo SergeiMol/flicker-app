@@ -100,7 +100,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   saveImage(title: string, URL: string): void {
     // @ts-ignore
     let arr = JSON.parse(localStorage.getItem('favorite'));
-    arr ? arr.push({title, link: URL}) : arr = [{title, url: URL}];
+    arr ? arr.push({title, url: URL}) : arr = [{title, url: URL}];
     localStorage.setItem('favorite', JSON.stringify(arr));
   }
 
