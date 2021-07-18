@@ -55,7 +55,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         .pages
         .valueChanges
         ?.subscribe(res => {
-          this.total = res * 10;
+          this.total = res * 12;
         })
     );
   }
