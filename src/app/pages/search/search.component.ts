@@ -50,9 +50,14 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   getImagesFromStorage(): void {
-    this.searchInputService.pages.valueChanges?.subscribe(res => {
-      this.total = res * 10;
-    });
+    this.subscriptions$.add(
+      this.searchInputService
+        .pages
+        .valueChanges
+        ?.subscribe(res => {
+          this.total = res * 10;
+        })
+    );
   }
 
   showInactiveNotification(): void {

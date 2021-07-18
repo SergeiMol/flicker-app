@@ -26,7 +26,7 @@ import { UserIdleModule } from 'angular-user-idle';
     HttpClientModule,
     NgxPaginationModule,
     MatRippleModule,
-    UserIdleModule.forRoot({idle: 4, timeout: 0})
+    UserIdleModule.forRoot({idle: 60, timeout: 0})
   ],
   providers: [],
   bootstrap: [AppComponent]

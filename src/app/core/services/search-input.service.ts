@@ -12,7 +12,6 @@ export class SearchInputService {
   private urlArr: IPhoto[] = [];
   pages = new FormControl();
 
-
   constructor(private httpSearch: HttpSearchService) {
   }
 
