@@ -9,7 +9,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatRippleModule } from '@angular/material/core';
-import { EllipsisModule } from 'ngx-ellipsis';
 import { MatButtonModule } from '@angular/material/button';
 
 
@@ -26,7 +25,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     NgxPaginationModule,
     MatRippleModule,
-    EllipsisModule,
     MatButtonModule
   ]
 })
