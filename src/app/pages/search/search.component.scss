@@ -5,6 +5,7 @@
     &__list {
       flex-wrap: wrap;
       display: flex;
+      justify-content: center;
     }
 
     &__item {
@@ -17,16 +18,18 @@
     }
 
     &__photo {
-      height: 100px;
+      margin-top: 10px;
+      height: 150px;
+      object-fit: fill;
     }
   }
 
   .empty-list {
     &__title {
       margin-top: 40px;
-      margin-left: 60px;
-      font-size: 32px;
+      font-size: 24px;
       line-height: 44px;
+      text-align: center;
     }
   }
 
@@ -43,22 +46,36 @@
     }
 
     &__content {
-      max-width: 1060px;
       width: 100%;
-      margin-left: 20px;
+      min-height: 100vh;
+      padding: 0 20px;
+      border-left: solid 1px rgba(0, 0, 0, 0.1);
+    }
+
+    &__pagination {
+      display: flex;
+      justify-content: center;
+
+      ::ng-deep .ngx-pagination {
+        padding: 0;
+      }
     }
 
     &__aside {
       max-width: 170px;
       width: 100%;
-      height: 100vh;
-      border-right: solid 1px rgba(0, 0, 0, 0.1);
       display: flex;
     }
 
     &__nav {
       width: 170px;
       margin-top: 170px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .search__aside {
+      display: none;
     }
   }
 }

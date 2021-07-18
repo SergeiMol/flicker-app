@@ -1,10 +1,22 @@
 <div class="header__container">
   <div class="logo__content">
-    <div class="logo__container"
-         routerLink="/"
-    >
-      <img alt="logo" src="assets/icons/flickr-logo.svg" class="logo__img">
-      <span class="logo__title">flickr</span>
+    <div class="logo__content_right-side">
+      <div class="hamburger-menu">
+        <input id="menu__toggle" type="checkbox"/>
+        <label class="menu__btn" for="menu__toggle">
+          <span></span>
+        </label>
+        <ul class="menu__box">
+          <li class="menu__item" mat-ripple><a [routerLink]="'search'">Search Images</a></li>
+          <li class="menu__item" mat-ripple><a [routerLink]="'bookmarks'">Bookmarks</a></li>
+        </ul>
+      </div>
+      <div class="logo__container"
+           routerLink="/"
+      >
+        <img alt="logo" src="assets/icons/flickr-logo.svg" class="logo__img">
+        <span class="logo__title">flickr</span>
+      </div>
     </div>
     <div class="header__icon">
       <img alt="icon" src="assets/icons/icon.svg">

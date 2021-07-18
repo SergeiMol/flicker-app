@@ -9,11 +9,11 @@ import { IPhoto } from '../../core/interfaces/photo.interface';
 })
 export class SearchComponent implements OnInit {
   images: IPhoto[] = [];
-  isEllipsis = true;
   element = document.getElementById('ellipsis-ex');
   page = 1;
   total = 0;
-  word = '';
+  previousWord = '';
+  emptyMessage = 'Start typing and see the magic';
 
   constructor(private searchInputService: SearchInputService) {
   }
@@ -24,31 +24,34 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  toggleEllipsis(): void {
-    this.element?.classList.toggle('text-truncate');
-    this.isEllipsis = !this.isEllipsis;
-  }
-
   handlePageChange(event: number): void {
     this.page = event;
-    this.images = this.searchInputService.onSearchFieldInput(this.word, this.page);
-
+    this.images = this.searchInputService.onSearchFieldInput(this.previousWord, this.page);
+    window.scroll(0, 0);
   }
 
   findPhotos(word: string): void {
-    if (word !== this.word) {
+    if (word !== this.previousWord) {
       this.page = 1;
     }
-    this.word = word;
+    this.previousWord = word;
     this.images = this.searchInputService.onSearchFieldInput(word, this.page);
+    this.checkContent(word);
+  }
+
+  checkContent(word: string): void {
+    console.log(word);
+    if (word && this.total) {
+      this.emptyMessage = 'Content not found';
+    } else {
+      this.emptyMessage = 'Start typing and see the magic';
+    }
   }
 
   save(title: string, URL: string): void {
     // @ts-ignore
     let arr = JSON.parse(localStorage.getItem('favorite'));
     arr ? arr.push({title, link: URL}) : arr = [{title, link: URL}];
-
     localStorage.setItem('favorite', JSON.stringify(arr));
   }
-
 }

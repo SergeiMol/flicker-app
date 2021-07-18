@@ -2,15 +2,37 @@
   <aside class="bookmarks__aside">
     <app-nav-list class="bookmarks__nav"></app-nav-list>
   </aside>
-  <div class="images__list" *ngIf="images?.length; else noContent">
 
-    <div *ngFor="let image of images; let i = index" class="bookmarks__content">
-      <img alt="{{image.title}}" src="{{image.link}}_m.jpg">
-      <button mat-ripple (click)="removeImage(i)">remove</button>
+  <div class="bookmarks__content">
+    <pagination-controls (pageChange)="handlePageChange($event)"
+                         [responsive]="true"
+                         *ngIf="images?.length"
+                         class="bookmarks__pagination"
+    >
+    </pagination-controls>
+    <div class="images__list" *ngIf="images?.length; else noContent">
+
+      <mat-card
+        *ngFor="let image of images| paginate:{ itemsPerPage: 12, currentPage: page, totalItems: images?.length };
+        let i = index"
+        class="images__item">
+        <mat-card-header>
+          <mat-card-title>{{image.title}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image class="images__photo" src="{{image.link}}_m.jpg" alt="{{image.title}}">
+        <mat-card-actions>
+          <button mat-ripple (click)="removeImage(i)">Remove</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
+    <pagination-controls (pageChange)="handlePageChange($event)"
+                         [responsive]="true"
+                         *ngIf="images?.length"
+                         class="bookmarks__pagination"
+    >
+    </pagination-controls>
   </div>
 </div>
-
 
 <ng-template #noContent>
   <div class="empty-list__title">

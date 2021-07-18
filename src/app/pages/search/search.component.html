@@ -10,6 +10,7 @@
     <pagination-controls (pageChange)="handlePageChange($event)"
                          [responsive]="true"
                          *ngIf="total"
+                         class="search__pagination"
     >
     </pagination-controls>
 
@@ -17,26 +18,28 @@
       <mat-card *ngFor="let image of images | paginate:{ itemsPerPage: 12, currentPage: page, totalItems: total }"
                 class="images__item">
         <mat-card-header>
-          <mat-card-title>{{image.title}}</mat-card-title>
+          <mat-card-title class="images__title">{{image.title}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image class="images__photo" src="{{image.url}}_m.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <img mat-card-image class="images__photo" src="{{image.url}}_m.jpg" alt="{{image.title}}">
+        </mat-card-content>
         <mat-card-actions>
-          <button mat-ripple (click)="save(image.title ,image.url)">LIKE</button>
+          <button mat-button (click)="save(image.title ,image.url)">Add to favorite</button>
         </mat-card-actions>
-
       </mat-card>
     </div>
+
     <pagination-controls (pageChange)="handlePageChange($event)"
                          [responsive]="true"
-                         *ngIf="total"
+                         *ngIf="total && images.length"
+                         class="search__pagination"
     >
     </pagination-controls>
   </div>
 </div>
 
-
 <ng-template #noContent>
   <div class="empty-list__title">
-    Start typing and see the magic
+    {{emptyMessage}}
   </div>
 </ng-template>

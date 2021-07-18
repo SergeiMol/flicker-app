@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookmarksComponent implements OnInit {
   images: any;
+  page = 1;
 
   constructor() {
   }
@@ -16,10 +17,14 @@ export class BookmarksComponent implements OnInit {
     this.images = JSON.parse(localStorage.getItem('favorite'));
   }
 
+  handlePageChange(event: number): void {
+    this.page = event;
+    window.scroll(0, 0);
+  }
+
   removeImage(index: number): void {
     this.images.splice(index, 1);
     localStorage.setItem('favorite', JSON.stringify(this.images));
-
   }
 
 }

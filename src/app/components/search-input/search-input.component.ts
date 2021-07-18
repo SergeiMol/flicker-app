@@ -25,7 +25,7 @@ export class SearchInputComponent implements OnInit {
   }
 
   onWordInput(): void {
-    this.form.valueChanges.pipe(debounceTime(500)).subscribe(res => this.searchValue.emit(res));
+    this.form.valueChanges.pipe(debounceTime(300)).subscribe(res => this.searchValue.emit(res));
   }
 
 

@@ -5,6 +5,8 @@ import { BookmarksRoutingModule } from './bookmarks-routing.module';
 import { BookmarksComponent } from './bookmarks.component';
 import { ComponentsModule } from '../../components/components.module';
 import { MatRippleModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { MatRippleModule } from '@angular/material/core';
     CommonModule,
     BookmarksRoutingModule,
     ComponentsModule,
-    MatRippleModule
+    MatRippleModule,
+    MatCardModule,
+    NgxPaginationModule
   ]
 })
 export class BookmarksModule {
