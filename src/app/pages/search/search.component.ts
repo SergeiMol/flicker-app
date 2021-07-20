@@ -1,9 +1,6 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SearchInputService } from '../../core/services/search-input.service';
 import { IPhoto } from '../../core/interfaces/photo.interface';
-import { UserIdleService } from 'angular-user-idle';
-import { MatDialog } from '@angular/material/dialog';
-import { InactivityNotificationComponent } from '../../components/inactivity-notification/inactivity-notification.component';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -21,32 +18,11 @@ export class SearchComponent implements OnInit, OnDestroy {
   previousWord = '';
   emptyMessage = 'Start typing and see the magic';
 
-  constructor(private searchInputService: SearchInputService,
-              private userIdle: UserIdleService,
-              private matDialog: MatDialog) {
-  }
-
-  @HostListener('document:keyup', ['$event'])
-  @HostListener('document:click', ['$event'])
-  @HostListener('document:wheel', ['$event'])
-  @HostListener('document:mousemove', ['$event'])
-  resetTimer(): void {
-    this.userIdle.resetTimer();
-  }
-
-  @HostListener('document:visibilitychange', ['$event'])
-  setTimerStatus(): void {
-    if (document.hidden && !this.matDialog.openDialogs.length) {
-      this.userIdle.stopWatching();
-    } else {
-      this.userIdle.startWatching();
-    }
+  constructor(private searchInputService: SearchInputService) {
   }
 
   ngOnInit(): void {
     this.getImagesFromStorage();
-    this.userIdle.startWatching();
-    this.showInactiveNotification();
   }
 
   getImagesFromStorage(): void {
@@ -57,20 +33,6 @@ export class SearchComponent implements OnInit, OnDestroy {
         ?.subscribe(res => {
           this.total = res * 12;
         })
-    );
-  }
-
-  showInactiveNotification(): void {
-    this.subscriptions$.add(
-      this.userIdle.onTimerStart().subscribe(count => {
-        if (count) {
-          this.userIdle.stopWatching();
-          this.matDialog.open(InactivityNotificationComponent, {
-            maxWidth: '100%',
-            width: '500px',
-          }).afterClosed().subscribe(() => this.userIdle.startWatching());
-        }
-      })
     );
   }
 

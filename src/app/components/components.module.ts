@@ -7,6 +7,7 @@ import { SearchInputComponent } from './search-input/search-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatRippleModule } from '@angular/material/core';
 import { InactivityNotificationComponent } from './inactivity-notification/inactivity-notification.component';
+import { UserActivityDirective } from './directives/user-activity.directive';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { InactivityNotificationComponent } from './inactivity-notification/inact
     NavListComponent,
     HeaderComponent,
     SearchInputComponent,
-    InactivityNotificationComponent
+    InactivityNotificationComponent,
+    UserActivityDirective
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,12 @@ import { InactivityNotificationComponent } from './inactivity-notification/inact
     ReactiveFormsModule,
     MatRippleModule
   ],
-  exports: [NavListComponent, HeaderComponent, SearchInputComponent]
+  exports: [
+    NavListComponent,
+    HeaderComponent,
+    SearchInputComponent,
+    UserActivityDirective
+  ]
 })
 export class ComponentsModule {
 }
