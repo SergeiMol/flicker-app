@@ -28,7 +28,7 @@ export class BookmarksComponent implements OnInit {
 
   @HostListener('document:visibilitychange', ['$event'])
   setTimerStatus(): void {
-    if (document.hidden) {
+    if (document.hidden && !this.matDialog.openDialogs.length) {
       this.userIdle.stopWatching();
     } else {
       this.userIdle.startWatching();
